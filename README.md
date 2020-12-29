@@ -5,20 +5,20 @@ A demo application using NestJS to list the content of a folder. It includes:
 * a react single page app client
 * a cli interface
 
+## Setup
+This project uses a monorepo with Yarn and Lerna.
+To setup the project, execute the following:
+```
+yarn
+yarn bootstrap
+```
+
 ## Launching the project
 ### The rest api and react application
 
-To launch in development mode:
+To launch:
 ```
-npm ci
-npm run start:api
-```
-
-To launch in production mode:
-```
-npm ci
-npm run build
-ROOT_PATH=[A-FOLDER] npm run start:api:prod
+ROOT_PATH=[A-FOLDER] yarn start
 ```
 
 To avoid security issues, be sure to pass a ROOT_PATH environment variable to indicate from where you want the LS

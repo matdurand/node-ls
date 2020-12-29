@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { FolderService, ItemType } from '@node-ls/core';
 import { Command, CommandArguments, _cli } from '@squareboat/nest-console';
+import * as dayjs from 'dayjs';
 
 @Injectable()
 export class CliService {
@@ -18,10 +19,11 @@ export class CliService {
       );
       _cli.info(`Total size of files is ${content.totalSize}`);
       content.itemsBySize.forEach((f) => {
+        const formattedDate = dayjs(f.lastModified).format('YYYY-MM-DD HH:mm:ss');
         if (f.type === ItemType.FILE) {
-          _cli.info(`File   - ${f.name} (${f.size} bytes)`);
+          _cli.info(`File   - ${f.name} (${f.size} bytes / last modified on ${formattedDate})`);
         } else {
-          _cli.info(`Folder - ${f.name}`);
+          _cli.info(`Folder - ${f.name} [last modified on ${formattedDate}]`);
         }
       });
     } catch (e) {

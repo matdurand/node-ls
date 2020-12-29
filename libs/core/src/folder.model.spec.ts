@@ -26,6 +26,10 @@ describe('FolderContent', () => {
     type: ItemType.FOLDER,
   };
 
+  it('should initialize items to empty array', () => {
+    expect(new FolderContent(null).items).toEqual([]);
+  });
+
   it('should return the number of files', () => {
     expect(new FolderContent([file1, file01, folder1]).filesCount).toBe(2);
   });

@@ -13,6 +13,12 @@ import { sanitize } from './path.sanitizer';
 import { resolve } from 'path';
 import { existsSync } from 'fs';
 
+const EMPTY_CONTENT = new FolderContent();
+EMPTY_CONTENT.filesCount = 0;
+EMPTY_CONTENT.items = [];
+EMPTY_CONTENT.subfoldersCount = 0;
+EMPTY_CONTENT.totalSize = 0;
+
 @Controller()
 export class LsController {
   rootPath: string;
@@ -21,7 +27,12 @@ export class LsController {
     private readonly folderService: FolderService,
     private readonly configService: ConfigService,
   ) {
-    this.rootPath = resolve(configService.get('ROOT_PATH'));
+    const rootPathParam = configService.get('ROOT_PATH');
+    if (!rootPathParam) {
+      throw new Error('Missing ROOT_PATH config');
+    }
+
+    this.rootPath = resolve(rootPathParam);
     if (!this.rootPath || !existsSync(this.rootPath)) {
       throw new Error(
         `ROOT_PATH environment variable [${this.rootPath}] doesnt not exist`,
@@ -39,10 +50,7 @@ export class LsController {
       return toApiFolderContent(content);
     } catch (e) {
       console.error(e);
-      if (e instanceof HttpException) {
-        throw e;
-      }
-      throw new BadRequestException('invalid path');
+      return EMPTY_CONTENT;
     }
   }
 }

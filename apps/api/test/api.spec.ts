@@ -18,8 +18,9 @@ describe('LsController (e2e)', () => {
     await app.init();
   });
 
-  it('/folder-content (GET)', () => {
-    return request(app.getHttpServer())
+  describe('/folder-content (GET)', () => {
+    it('should return the content of the test folder', () => {
+      return request(app.getHttpServer())
       .get('/folder-content?path=testfolder')
       .expect(200)
       .expect((response) => {
@@ -34,5 +35,21 @@ describe('LsController (e2e)', () => {
           'a.txt',
         ]);
       });
+    });
+
+    it('should return an empty result for a non existing folder', () => {
+      return request(app.getHttpServer())
+      .get('/folder-content?path=YYYYYYYYYYYYYYYYYYYYYYYYYYYY')
+      .expect(200)
+      .expect((response) => {
+        const body = response.body;
+        expect(body.filesCount).toBe(0);
+        expect(body.subfoldersCount).toBe(0);
+        expect(body.totalSize).toBe(0);
+        expect(body.items.length).toBe(0);
+        
+      });
+    });
   });
+
 });
