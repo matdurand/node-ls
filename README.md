@@ -5,7 +5,6 @@ A demo application using NestJS to list the content of a folder. It includes:
 * a react single page app client
 * a cli interface
 
-Note: **THIS IS HIGHLY UNSECURE AS YOU ARE ABLE TO LIST THE CONTENT OF ANY FOLDER ON THE SERVER.**
 ## Launching the project
 ### The rest api and react application
 
@@ -19,8 +18,11 @@ To launch in production mode:
 ```
 npm ci
 npm run build
-npm run start:api:prod
+ROOT_PATH=[A-FOLDER] npm run start:api:prod
 ```
+
+To avoid security issues, be sure to pass a ROOT_PATH environment variable to indicate from where you want the LS
+to work. If the ROOT_PATH is missing or invalid, you will get an error.
 
 This will give you the following links:
 * http://localhost:3000/api/doc : the swagger doc of the rest api

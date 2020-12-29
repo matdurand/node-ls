@@ -3,6 +3,15 @@ import { readdirSync, existsSync, lstatSync } from 'fs';
 import { join } from 'path';
 import { FolderContent, FolderItem, ItemType } from './folder.model';
 
+class InvalidPathError extends Error {
+  path: string;
+
+  constructor(path: string) {
+    super('invalid path: ' + path);
+    this.path = path;
+  }
+}
+
 function validatePath(path: string): boolean {
   return existsSync(path);
 }
@@ -23,7 +32,7 @@ function readFolder(path: string): FolderItem[] {
       };
     });
   }
-  throw new Error('Invalid path');
+  throw new InvalidPathError(path);
 }
 
 @Injectable()

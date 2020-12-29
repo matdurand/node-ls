@@ -1,4 +1,5 @@
 module.exports = {
+  setupFiles: ['./test-setup.ts'],
   runner: 'groups',
   moduleFileExtensions: ['js', 'json', 'ts'],
   transform: {

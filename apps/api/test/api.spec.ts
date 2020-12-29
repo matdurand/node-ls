@@ -23,7 +23,16 @@ describe('LsController (e2e)', () => {
       .get('/folder-content?path=testfolder')
       .expect(200)
       .expect((response) => {
-        expect(response.body).toMatchSnapshot();
+        const body = response.body;
+        expect(body.filesCount).toBe(3);
+        expect(body.items.length).toBe(5);
+        expect(body.items.map((i) => i.name)).toEqual([
+          'folder01',
+          'folder1',
+          'aa.txt',
+          'b.txt',
+          'a.txt',
+        ]);
       });
   });
 });

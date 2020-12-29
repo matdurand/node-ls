@@ -1,6 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv-flow').config();
+
 import { NestFactory } from '@nestjs/core';
 import { LsModule } from './ls.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(LsModule);
@@ -13,7 +17,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/', app, document);
 
+  const configService = app.get(ConfigService);
+
   console.log('LsApi listening on port ', process.env.PORT || 3000);
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(configService.get('PORT') || 3000);
 }
 bootstrap();
