@@ -12,6 +12,7 @@ import { ConfigService } from '@nestjs/config';
 import { sanitize } from './path.sanitizer';
 import { resolve } from 'path';
 import { existsSync } from 'fs';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 const EMPTY_CONTENT = new FolderContent();
 EMPTY_CONTENT.filesCount = 0;
@@ -19,7 +20,7 @@ EMPTY_CONTENT.items = [];
 EMPTY_CONTENT.subfoldersCount = 0;
 EMPTY_CONTENT.totalSize = 0;
 
-@Controller()
+@Controller("/api")
 export class LsController {
   rootPath: string;
 
@@ -42,6 +43,12 @@ export class LsController {
   }
 
   @Get('/folder-content')
+  @ApiOperation({ summary: 'Get folder content' })
+  @ApiResponse({
+    status: 200,
+    description: 'The folder content',
+    type: FolderContent,
+  })
   getFolderContent(@Query('path') path: string): FolderContent {
     try {
       const content = this.folderService.getFolderContent(

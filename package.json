@@ -10,11 +10,12 @@
   "devDependencies": {
     "lerna": "^3.22.1",
     "prettier": "^2.0.5",
-    "monorepo-run": "^0.4.2"
+    "monorepo-run": "^0.4.2",
+    "recursive-copy-cli": "^1.0.15"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "node --max-old-space-size=1900 ./node_modules/.bin/lerna run build",
-    "start": "mono-run start --stream 500"
+    "build": "lerna run build",
+    "start": "mono-run start --stream 500 --ui row"
   }
 }

@@ -9,18 +9,24 @@ export class FolderItem {
   @ApiProperty()
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    required: false
+  })
   size?: number;
 
   @ApiProperty()
-  lastModified?: Date;
+  lastModified: Date;
 
-  @ApiProperty()
+  @ApiProperty({
+    enum: ItemType
+  })
   type: ItemType;
 }
 
 export class FolderContent {
-  @ApiProperty()
+  @ApiProperty({
+    type: FolderItem
+  })
   items: FolderItem[];
 
   @ApiProperty()

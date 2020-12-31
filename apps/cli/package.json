@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build"
+    "build": "nest build && yarn copy-to-dist",
+    "copy-to-dist": "recursive-copy dist ../../dist/apps/cli -w"
   },
   "dependencies": {
     "@nestjs/common": "^7.5.1",

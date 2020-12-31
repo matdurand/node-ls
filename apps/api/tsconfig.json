@@ -2,11 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "declaration": false,
-    "outDir": "../../dist/apps/api"
+    "outDir": "./dist"
   },
   "include": [
     "src/**/*",
-    "test-setup.ts"
+    "src/test-setup.ts"
   ],
   "exclude": [
     "node_modules",
