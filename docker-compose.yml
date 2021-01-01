@@ -1,0 +1,27 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_frontend
+    image: "node-ls-frontend:1.0.0"
+    networks:
+      - sub-etha
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_backend
+    image: "node-ls-backend:1.0.0"
+    networks:
+      - sub-etha
+  proxy:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_proxy
+    image: "node-ls-proxy:1.0.0"
+    networks:
+      - sub-etha
+    ports:
+      - "80:80"
+networks:
+  sub-etha:

@@ -10,7 +10,7 @@ const AppWrapper = styled.div`
 `;
 
 function getFolderContent(path: string): Promise<FolderContent> {
-  return fetch('http://localhost:3000/api/folder-content?path=' + path).then(data => data.json());
+  return fetch('/api/folder-content?path=' + path).then(data => data.json());
 }
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
     <AppWrapper>
       <header>
         <p>
-          Node-LS application. Allows to list files and folder available on the server.
+          Node-LS application. Allows to list files and folder available on the server. (Use . for root folder)
         </p>
       </header>
       <section>
