@@ -21,7 +21,7 @@ describe('LsController (e2e)', () => {
   describe('/folder-content (GET)', () => {
     it('should return the content of the test folder', () => {
       return request(app.getHttpServer())
-      .get('/folder-content?path=testfolder')
+      .get('/api/folder-content?path=testfolder')
       .expect(200)
       .expect((response) => {
         const body = response.body;
@@ -39,7 +39,7 @@ describe('LsController (e2e)', () => {
 
     it('should return an empty result for a non existing folder', () => {
       return request(app.getHttpServer())
-      .get('/folder-content?path=YYYYYYYYYYYYYYYYYYYYYYYYYYYY')
+      .get('/api/folder-content?path=YYYYYYYYYYYYYYYYYYYYYYYYYYYY')
       .expect(200)
       .expect((response) => {
         const body = response.body;

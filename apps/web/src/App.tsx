@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import React, {useState} from 'react';
 import {FolderContent} from './models';
 import FolderContentComponent from './components/FolderContent';
-import FolderFormComponent from './components/FolderFom';
+import FolderFormComponent from './components/FolderForm';
 
 const AppWrapper = styled.div`
   padding: 10px;

@@ -16,6 +16,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "test": "lerna run test",
     "start": "mono-run start --stream 500 --ui row"
   }
 }

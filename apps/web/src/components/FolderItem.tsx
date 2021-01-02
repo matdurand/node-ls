@@ -1,4 +1,6 @@
 import { FolderItem } from "../models";
+import React from 'react';
+import dayjs from 'dayjs'
 
 interface Item {
   item: FolderItem;
@@ -6,12 +8,13 @@ interface Item {
 
 const FolderItemComponent = (props: Item) => {
   const {item} = props;
+  const formattedDate = dayjs(item.lastModified).format('YYYY-MM-DD HH:mm:ss');
   return (
     <li>
       <p>
-      {item.type === "file" && <span>File [ {item.name} ] - {item.size} bytes</span>}
-      {item.type === "folder" && <span>Folder [ {item.name} ]</span>}
-      <span> - last modified on {item.lastModified}</span>
+      {item.type === "file" && <span>File [ <span data-testid="name">{item.name}</span> ] - <span data-testid="size">{item.size}</span> bytes</span>}
+      {item.type === "folder" && <span>Folder [ <span data-testid="name">{item.name}</span> ]</span>}
+      <span> - last modified on <span data-testid="last-modified">{formattedDate}</span></span>
       </p>
     </li>
   );
