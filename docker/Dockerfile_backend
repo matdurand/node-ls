@@ -8,8 +8,8 @@ RUN yarn build
 FROM node:12.20.0-alpine
 WORKDIR /app
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/dist/apps/api ./api
-COPY --from=build /app/dist/libs/core ./core
+COPY --from=build /app/apps/api/dist ./api
+COPY --from=build /app/libs/core/dist ./core
 COPY --from=build /app/libs/core/package.json ./core/package.json
 RUN npm link ./core
 

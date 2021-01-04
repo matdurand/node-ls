@@ -6,7 +6,7 @@ A demo application using NestJS to list the content of a folder. It includes:
 * a cli interface
 
 ## Dev setup
-This project uses a monorepo with Yarn and Lerna.
+This project uses a monorepo with Yarn and Lerna. It has been tested using NODE 12.20.
 
 To setup the project, execute the following:
 ```
@@ -26,8 +26,7 @@ To avoid security issues, be sure to pass a ROOT_PATH environment variable to in
 to work. If the ROOT_PATH is missing or invalid, you will get an error.
 
 This will give you the following links:
-* http://localhost:3000/api/doc : the swagger doc of the rest api
-* http://localhost:3000/api : the rest api
+* http://localhost:4000/api : the swagger doc of the rest api
 * http://localhost:3000 : the react application
 
 ## The CLI interface
@@ -55,6 +54,11 @@ To run the project (api and react) using docker, there is 3 images:
 To launch everything, there is a docker-compose available. Just launch
 ```
 docker-compose up -d
+```
+
+You can also rebuild using
+```
+docker-compose build
 ```
 
 You can the open http://localhost to view the react frontend. It will serve the content of the testfolder in `docker/testfolder`. 

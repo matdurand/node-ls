@@ -10,8 +10,7 @@
   "devDependencies": {
     "lerna": "^3.22.1",
     "prettier": "^2.0.5",
-    "monorepo-run": "^0.4.2",
-    "recursive-copy-cli": "^1.0.15"
+    "monorepo-run": "^0.4.2"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",

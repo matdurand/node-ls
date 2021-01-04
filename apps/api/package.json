@@ -6,12 +6,10 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "start": "NODE_ENV=dev nest start api --watch",
-    "start:prod": "node dist/apps/api/src/main",
     "test": "jest --coverage",
     "test:unit": "jest --group=-e2e",
     "test:e2e": "jest --group=e2e",
-    "build": "nest build && yarn copy-to-dist",
-    "copy-to-dist": "recursive-copy dist ../../dist/apps/api -w"
+    "build": "nest build"
   },
   "dependencies": {
     "@nestjs/common": "^7.5.1",

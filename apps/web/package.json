@@ -23,11 +23,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && yarn copy-to-dist",
+    "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false",
     "test:watch": "react-scripts test",
-    "eject": "react-scripts eject",
-    "copy-to-dist": "recursive-copy build ../../dist/apps/web/build -w"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

@@ -11,10 +11,9 @@
   },
   "scripts": {
     "afterinstall": "npm run build",
-    "build": "node_modules/.bin/tsc -p tsconfig.build.json && yarn copy-to-dist",
+    "build": "node_modules/.bin/tsc -p tsconfig.build.json",
     "format": "prettier --write \"**/*.ts\"",
-    "test": "jest --coverage",
-    "copy-to-dist": "recursive-copy dist ../../dist/libs/core -w"
+    "test": "jest --coverage"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
